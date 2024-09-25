@@ -7,8 +7,11 @@ export const useTextOverlay = (initialText = '') => {
   const [textSize, setTextSize] = useState({ width: 20, height: 10 });
   const [textRotation, setTextRotation] = useState(0);
 
-  const handleTextDrag = (x: number, y: number) => {
-    setTextPos({ x, y });
+  const handleTextDrag = (dx: number, dy: number) => {
+    setTextPos((prev) => ({
+      x: Math.min(Math.max(prev.x + dx, 0), 100),
+      y: Math.min(Math.max(prev.y + dy, 0), 100),
+    }));
   };
 
   return {

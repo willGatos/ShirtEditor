@@ -225,19 +225,19 @@ const ColorPicker: React.FC<{
 
 export function PulloverCustomizerComponent() {
   const { googleFonts, selectedGoogleFont, setSelectedGoogleFont, selectedVariant, setSelectedVariant } = useGoogleFonts();
-  const { text, setText, textColor, setTextColor, textPos, textSize, setTextSize, textRotation, setTextRotation } = useTextOverlay();
+  const { text, setText, textColor, setTextColor, textPos, textSize, setTextSize, textRotation, setTextRotation,handleTextDrag } = useTextOverlay();
   
   const [image, setImage] = useState<string | null>(null);
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
   const [imageSize, setImageSize] = useState({ width: 50, height: 50 });
   const [imageRotation, setImageRotation] = useState(0);
   const [font, setFont] = useState("Arial");
-  const [customFont, setCustomFont] = useState("");
+  const [customFont] = useState("");
   const pulloverRef = useRef<HTMLDivElement>(null);
-  const [orderDescription, setOrderDescription] = useState(
+  const [orderDescription] = useState(
     "Sample order description"
   );
-  const [orderImage, setOrderImage] = useState(
+  const [orderImage] = useState(
     "/placeholder.svg?height=200&width=200"
   );
 
@@ -281,13 +281,6 @@ export function PulloverCustomizerComponent() {
 
   const handleImageDrag = (dx: number, dy: number) => {
     setImagePos((prev) => ({
-      x: Math.min(Math.max(prev.x + dx, 0), 100),
-      y: Math.min(Math.max(prev.y + dy, 0), 100),
-    }));
-  };
-
-  const handleTextDrag = (dx: number, dy: number) => {
-    setTextPos((prev) => ({
       x: Math.min(Math.max(prev.x + dx, 0), 100),
       y: Math.min(Math.max(prev.y + dy, 0), 100),
     }));
