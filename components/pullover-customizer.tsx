@@ -440,7 +440,7 @@ export function PulloverCustomizerComponent() {
         </div>
 
         <div>
-          <Label htmlFor="font-select">Font</Label>
+          <Label htmlFor="font-select">Tipografias</Label>
           <Select onValueChange={setFont} value={font}>
             <SelectTrigger>
               <SelectValue placeholder="Select a font" />
@@ -478,7 +478,7 @@ export function PulloverCustomizerComponent() {
         <div>
           <Button asChild variant="outline">
             <a
-              href="https://www.remove.bg/es"
+              href={"https://fonts.google.com/?preview.text=" + text}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center"
